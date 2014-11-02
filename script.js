@@ -47,11 +47,14 @@ $(document).ready(function(){
             return alert("You got it!")
             //you got hte right answer
         }
-        console.log("You have " + (5-guessNumber) +" guesses remaining.")
+        console.log("You have " + (4-guessNumber) +" guesses remaining.")
         guessNumber++;
-        if (guessNumber > 5) {
+        if (guessNumber >= 5) {
             // change a variable on top to false, and make it so the program doesnt run if it's false (similar to the "once" function)
             // and allows the user to reset the game after they fail
+            console.log("YOU LOSE!");
+            $("#hint").removeClass("hidden");
+            $("#reset").removeClass("hidden");
         }
 
         console.log(guessList);
