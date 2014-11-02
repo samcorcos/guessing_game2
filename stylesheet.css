@@ -6388,16 +6388,6 @@ button.close {
     text-align: center;
 }
 
-.above {
-  background-color: #FF8888;
-}
-.below {
-  background-color: #5588FF;
-}
-.equals {
-  background-color: #000000;
-}
-
 .main {
   position: absolute;
   top: 25%;
@@ -6408,4 +6398,20 @@ button.close {
 
 #two-buttons {
     text-align: center;
+}
+
+.cold {
+    background-color: #0000FF;
+}
+
+.warm {
+    background-color: #FF9999;
+}
+
+.hot {
+    background-color: #FF4D4D;
+}
+
+.win {
+    background-color: #FF0000;
 }

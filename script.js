@@ -5,18 +5,17 @@ function isRepeat(x, array) {
     for (i=0; i<array.length; i++) {
         if (array[i] == x) {
             return true;
-        }
-    }
+        };
+    };
 }
 
 $(document).ready(function(){
     var guessNumber = 0;
     var guessList = [];
 
-
     $("#submit").on("click", function(){
         var guess = $("#guess").val();
-        console.log("The guess is: " + guess)
+        console.log("The guess is: " + guess);
 
         // first thing to do is test if you inputted a number and that it's between 1-100
         // if not, throw an error. It also needs to be within the acceptable range
@@ -31,22 +30,41 @@ $(document).ready(function(){
         guessList.push(guess);
 
         // hot or cold - if its more than 25 away, it's cold; 10-25 is warm; <10 is hot
-        if (Math.abs(correctNumber - guess) > 25) {
-            console.log("youre cold")
-            // print "you're cold!"
-            // and change the background to dark blue
-        } else if (Math.abs(correctNumber - guess) <= 25 && (Math.abs(correctNumber - guess) > 10)) {
-            console.log("youre warm")
-            // print "youre warm!"
-            // and change the background color to something warm
-        } else if (Math.abs(correctNumber - guess) <= 10 && (Math.abs(correctNumber - guess) > 0)) {
-            console.log("youre hot")
-            // print "youre hot!"
-            // and change the background to hellfire
-        } else {
-            return alert("You got it!")
-            //you got hte right answer
+        // Make sure this only runs on the first guess!!!
+        if (guessNumber == 0) {
+            if (Math.abs(correctNumber - guess) > 25) {
+                console.log("youre cold")
+                $("body").removeClass();
+                $("body").addClass("cold");
+                // print "you're cold!"
+                // and change the background to dark blue
+            } else if (Math.abs(correctNumber - guess) <= 25 && (Math.abs(correctNumber - guess) > 10)) {
+                console.log("youre warm")
+                $("body").removeClass();
+                $("body").addClass("warm");
+                // print "youre warm!"
+                // and change the background color to something warm
+            } else if (Math.abs(correctNumber - guess) <= 10 && (Math.abs(correctNumber - guess) > 0)) {
+                console.log("youre hot")
+                $("body").removeClass();
+                $("body").addClass("hot");
+                // print "youre hot!"
+                // and change the background to hellfire
+            } else {
+                return alert("You got it!")
+                $("body").removeClass();
+                //you got hte right answer
+            }
         }
+
+        // Needs a "warmer or colder" for all guesses after the first guess
+        // needs to compare the current guess with the previous guess. The last item can be accessed using: array[array.length-1]
+        if (guessNumber > 0) {
+
+        };
+
+
+
         console.log("You have " + (4-guessNumber) +" guesses remaining.")
         guessNumber++;
         if (guessNumber >= 5) {
