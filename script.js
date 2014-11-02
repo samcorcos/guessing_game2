@@ -65,6 +65,10 @@ $(document).ready(function(){
 
     });
 
+    $("#hint").on("click", function() {
+        console.log(correctNumber);
+    });
+
     $("#reset").on("click", function() {
         location.reload();
         alert("The game has been reset!")
