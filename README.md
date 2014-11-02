@@ -1,6 +1,3 @@
-guessing_game2
-==============
-
 #Project Requirements:
 
 * When a game begins, there should be a random number generated between 1-100.
