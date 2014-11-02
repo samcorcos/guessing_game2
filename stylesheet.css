@@ -6405,3 +6405,7 @@ button.close {
   right: 0;
   bottom: 0;
 }
+
+#two-buttons {
+    text-align: center;
+}
