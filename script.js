@@ -29,30 +29,36 @@ $(document).ready(function(){
         // if the number meets all the criteria and hasnt been used, add it to the list of guesses
         guessList.push(guess);
 
-        // hot or cold - if its more than 25 away, it's cold; 10-25 is warm; <10 is hot
-        // Make sure this only runs on the first guess!!!
+        // hot or cold - if its more than 25 away, it's cold; 10-25 is warm; <10 is hot --done
+        // Make sure this only runs on the first guess!!! --done
         if (guessNumber == 0) {
             if (Math.abs(correctNumber - guess) > 25) {
-                console.log("youre cold")
+                $("#status").text("You're Cold!")
+                $("#status").removeClass();
                 $("body").removeClass();
                 $("body").addClass("cold");
                 // print "you're cold!"
                 // and change the background to dark blue
             } else if (Math.abs(correctNumber - guess) <= 25 && (Math.abs(correctNumber - guess) > 10)) {
-                console.log("youre warm")
+                $("#status").text("You're Warm.")
+                $("#status").removeClass();
                 $("body").removeClass();
                 $("body").addClass("warm");
                 // print "youre warm!"
                 // and change the background color to something warm
             } else if (Math.abs(correctNumber - guess) <= 10 && (Math.abs(correctNumber - guess) > 0)) {
-                console.log("youre hot")
+                $("#status").text("You're Hot!")
+                $("#status").removeClass();
                 $("body").removeClass();
                 $("body").addClass("hot");
                 // print "youre hot!"
                 // and change the background to hellfire
             } else {
+                $("#status").text("You Got It!!!")
+                $("#status").removeClass();
                 $("#hint").removeClass("hidden");
                 $("#reset").removeClass("hidden");
+                $("body").addClass("hot");
                 return alert("You got it!")
                 //you got hte right answer
             };
@@ -62,15 +68,20 @@ $(document).ready(function(){
         // needs to compare the current guess with the previous guess. The last item can be accessed using: array[array.length-1]
         if (guessNumber > 0 && guessNumber < 5) {
             if (guess == correctNumber) {
+                $("#status").text("You Got It!!!")
+                $("#status").removeClass();
                 $("#hint").removeClass("hidden");
                 $("#reset").removeClass("hidden");
-                return alert("you win!")
+                $("body").addClass("hot");
+                return alert("You Win!")
             } else if (Math.abs(guess - correctNumber) < Math.abs(guessList[guessList.length-2] - correctNumber)) {
-                console.log("warmer!")
+                $("#status").text("Warmer...")
+                $("#status").removeClass();
                 $("body").removeClass();
                 $("body").addClass("warm");
             } else if (Math.abs(guess - correctNumber) > Math.abs(guessList[guessList.length-2] - correctNumber)) {
-                console.log("colder!")
+                $("#status").text("Colder...")
+                $("#status").removeClass();
                 $("body").removeClass();
                 $("body").addClass("cold");
             }
@@ -106,7 +117,6 @@ $(document).ready(function(){
 
     $("#reset").on("click", function() {
         location.reload();
-        alert("The game has been reset!")
     });
 
 

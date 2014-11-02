@@ -6401,7 +6401,7 @@ button.close {
 }
 
 .cold {
-    background-color: #0000FF;
+    background-color: #4444FF;
 }
 
 .warm {
@@ -6414,4 +6414,9 @@ button.close {
 
 .win {
     background-color: #FF0000;
+}
+
+#status {
+    text-align: center;
+    margin-bottom:1em;
 }
