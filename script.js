@@ -51,16 +51,29 @@ $(document).ready(function(){
                 // print "youre hot!"
                 // and change the background to hellfire
             } else {
+                $("#hint").removeClass("hidden");
+                $("#reset").removeClass("hidden");
                 return alert("You got it!")
-                $("body").removeClass();
                 //you got hte right answer
-            }
-        }
+            };
+        };
 
         // Needs a "warmer or colder" for all guesses after the first guess
         // needs to compare the current guess with the previous guess. The last item can be accessed using: array[array.length-1]
-        if (guessNumber > 0) {
-
+        if (guessNumber > 0 && guessNumber < 5) {
+            if (guess == correctNumber) {
+                $("#hint").removeClass("hidden");
+                $("#reset").removeClass("hidden");
+                return alert("you win!")
+            } else if (Math.abs(guess - correctNumber) < Math.abs(guessList[guessList.length-2] - correctNumber)) {
+                console.log("warmer!")
+                $("body").removeClass();
+                $("body").addClass("warm");
+            } else if (Math.abs(guess - correctNumber) > Math.abs(guessList[guessList.length-2] - correctNumber)) {
+                console.log("colder!")
+                $("body").removeClass();
+                $("body").addClass("cold");
+            }
         };
 
 
@@ -70,9 +83,10 @@ $(document).ready(function(){
         if (guessNumber >= 5) {
             // change a variable on top to false, and make it so the program doesnt run if it's false (similar to the "once" function)
             // and allows the user to reset the game after they fail
-            console.log("YOU LOSE!");
             $("#hint").removeClass("hidden");
             $("#reset").removeClass("hidden");
+            return alert("YOU LOSE!");
+
         }
 
         console.log(guessList);
