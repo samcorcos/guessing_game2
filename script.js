@@ -1,5 +1,5 @@
 $(document).ready(function(){
-    var userGuess = 0;
+    var guessNumber = 1;
 
     $("#submit").on("click", function(){
         var guess = +$("#guess").val();
